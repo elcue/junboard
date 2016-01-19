@@ -13,10 +13,18 @@ public class ListAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable {
+		
+		int page = 0;
+		
+		if(request.getParameter("page") != null){
+			page = Integer.parseInt(request.getParameter("page"));
+		}
 			
-		ArrayList<Board> articleList = BoardDao.getInstance().getArticleList();
+		ArrayList<Board> articleList = BoardDao.getInstance().getArticleList(page);
 		
 		request.setAttribute("articleList", articleList);
+		
+		request.setAttribute("page", page);
 		
 		
 		return "/junboard/list.jsp";

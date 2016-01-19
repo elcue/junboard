@@ -7,8 +7,8 @@
 <%@ page import="java.util.regex.Pattern"%>
 
 <%@ page import="com.board.beans.Board" %>
-
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -63,6 +63,25 @@
 		</c:forEach>
 
 	</table>
+	
+	<c:if test="${page > 0}"> 
+		<a href="list.do?page=${page-10}">이전페이지</a> 
+	</c:if>
+	<c:if test="${page == 0}"> 
+		<a href="#">이전페이지</a> 
+	</c:if>
+	
+	
+	<fmt:parseNumber value="${page/10+1 }" type="number"  integerOnly="True" /> now
+	
+	
+	<c:if test="${fn:length( articleList ) < 10}"> 
+		<a href="#">다음페이지</a>
+	</c:if>
+	<c:if test="${fn:length( articleList ) == 10}"> 
+		<a href="list.do?page=${page+10}">다음페이지</a>
+	</c:if>
+
 
 	<a href="./junboard/write.jsp">글쓰기</a>
 	

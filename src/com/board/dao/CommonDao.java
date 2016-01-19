@@ -10,17 +10,10 @@ public class CommonDao {
 	private SqlMapClient myDB;
 	 
 	public void SetDB() {
-	 
-	    myDB = IBatisDBConnector.getSqlMapInstance();
-	 
-	}
-	 
-	 
-	 
+		myDB = IBatisDBConnector.getSqlMapInstance();
+	 }
 	protected SqlMapClient GetDB() {
-	 
 	    return myDB;
-	 
 	}
 	
 }

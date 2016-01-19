@@ -14,7 +14,7 @@ public class BoardDao extends CommonDao {
 		return _instance;
 	}
 
-	public ArrayList<Board> getArticleList() throws SQLException {
-		return (ArrayList<Board>) GetDB().queryForList("getArticleList", null);
+	public ArrayList<Board> getArticleList(int page) throws SQLException {
+		return (ArrayList<Board>) GetDB().queryForList("getArticleList", null, page, 10);
 	}
 }
